@@ -2,7 +2,6 @@
 
 We will do **Q1–Q5 in class** (guided), and **Q6–Q10** independently (practice on the same topics).
 Topics: **List<T>**, **Stack<T>** (LIFO), **Queue<T>** (FIFO).
-Target: .NET 8 C#; use clear, brace-based loops.
 
 ---
 
@@ -41,7 +40,9 @@ Count: 3
 
 ### 2) List Modify: Insert, RemoveAt, Remove
 
-Insert `"Butter"` at index `1`. Remove the last item by index. Remove `"Eggs"` by value. Print the final list.
+- Insert `"Butter"` at index `1`. 
+- Remove the last item by index. 
+- Remove `"Eggs"` by value. Print the final list.
 
 ```csharp
 using System;
@@ -69,9 +70,11 @@ Butter
 
 ---
 
-### 3) Stack Basics (LIFO) — Browser Back
+### 3) Stack Basics (LIFO)
 
-Push page names onto a `Stack<string>` as you “visit” them. Show the current page with `Peek()`, then pop all to go back.
+- Push page names onto a `Stack<string>` as you “visit” them. 
+- Show the current page with `Peek()`.
+- Pop all to go back.
 
 ```csharp
 using System;
@@ -153,7 +156,7 @@ Handled: 104
 
 ---
 
-### 5) Mini Combo — Queue Processing + Log in List
+### 5) Queue Processing + Log in List
 
 Use a `Queue<int>` to process ticket IDs and keep a log of processed IDs in a `List<int>`.
 
@@ -271,7 +274,7 @@ Remaining: 0
 
 ---
 
-### 10) Mini Combo — Priorities to Front (Simple)
+### 10) Priorities to Front 
 
 **Input**
 
