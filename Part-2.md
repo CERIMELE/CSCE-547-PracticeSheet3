@@ -115,7 +115,7 @@ codes.Add(30, "Gamma");
 Console.WriteLine("By Keys:");
 foreach (var k in codes.Keys) Console.WriteLine(k);
 
-Console.WriteLine("Key→Value:");
+Console.WriteLine("Key: Value:");
 foreach (var kv in codes) Console.WriteLine(kv.Key + ": " + kv.Value);
 
 Console.WriteLine("Lookup 20: " + codes[20]);
@@ -128,7 +128,7 @@ By Keys:
 10
 20
 30
-Key→Value:
+Key: Value:
 10: Alpha
 20: Beta
 30: Gamma
