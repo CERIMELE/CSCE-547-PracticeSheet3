@@ -1,15 +1,16 @@
-# Lists, Stacks, & Queues — Practice Sheet (Beginner-Friendly)
+# Lists, Stacks, Queues, LinkedList & HashSet — Practice Sheet (Beginner-Friendly)
 
 We will do **Q1–Q5 in class** (guided), and **Q6–Q10** independently (practice on the same topics).
-Topics: **List<T>**, **Stack<T>** (LIFO), **Queue<T>** (FIFO).
+Topics: **List<T>**, **Stack<T>** (LIFO), **Queue<T>** (FIFO), **LinkedList<T>**, **HashSet<T>**.
+
 
 ---
 
 ## Theme A (Q1–Q5): Guided
 
-### 1) List Basics (strings)
+### 1) List Basics **+ Modifications** (strings)
 
-Create a shopping list with `List<string>`. Add three items and print the count and each item with its index.
+Create a shopping list with `List<string>`. Add items, then **insert**, **remove by index**, and **remove by value**. Finally, print count and all items with their index.
 
 ```csharp
 using System;
@@ -19,6 +20,11 @@ List<string> shopping = new List<string>();
 shopping.Add("Milk");
 shopping.Add("Eggs");
 shopping.Add("Bread");
+
+shopping.Insert(1, "Butter");                 // Milk, Butter, Eggs, Bread
+shopping.RemoveAt(shopping.Count - 1);          // remove last (Bread)
+bool removed = shopping.Remove("Eggs");        // remove by value
+Console.WriteLine("Removed Eggs: " + removed);
 
 Console.WriteLine("Count: " + shopping.Count);
 for (int i = 0; i < shopping.Count; i++)
@@ -30,51 +36,17 @@ for (int i = 0; i < shopping.Count; i++)
 **Expected Output**
 
 ```
-Count: 3
-0: Milk
-1: Eggs
-2: Bread
-```
-
----
-
-### 2) List Modify: Insert, RemoveAt, Remove
-
-- Insert `"Butter"` at index `1`. 
-- Remove the last item by index. 
-- Remove `"Eggs"` by value. Print the final list.
-
-```csharp
-using System;
-using System.Collections.Generic;
-
-List<string> shopping = new List<string> { "Milk", "Eggs", "Bread" };
-shopping.Insert(1, "Butter");
-shopping.RemoveAt(shopping.Count - 1); // remove last (Bread)
-bool removed = shopping.Remove("Eggs"); // remove by value
-
-Console.WriteLine("Removed Eggs: " + removed);
-foreach (string item in shopping)
-{
-    Console.WriteLine(item);
-}
-```
-
-**Expected Output**
-
-```
 Removed Eggs: True
-Milk
-Butter
+Count: 2
+0: Milk
+1: Butter
 ```
 
 ---
 
-### 3) Stack Basics (LIFO)
+### 2) Stack Basics (LIFO)
 
-- Push page names onto a `Stack<string>` as you “visit” them. 
-- Show the current page with `Peek()`.
-- Pop all to go back.
+Push page names onto a `Stack<string>` as you "visit" them. Show the current page with `Peek()`, then pop all to go back.
 
 ```csharp
 using System;
@@ -114,9 +86,9 @@ Back to: Home
 
 ---
 
-### 4) Queue Basics (FIFO) — Ticket Line
+### 3) Queue Basics (FIFO)
 
-Enqueue tickets, peek the next ticket, then dequeue all while printing.
+Enqueue ticket IDs, peek the next ticket, then dequeue all while printing.
 
 ```csharp
 using System;
@@ -156,26 +128,101 @@ Handled: 104
 
 ---
 
-### 5) Queue Processing + Log in List
+### 4) LinkedList Basics (strings)
 
-Use a `Queue<int>` to process ticket IDs and keep a log of processed IDs in a `List<int>`.
+Create a `LinkedList<string>` for a simple nav trail. Add pages and print them in order.
 
 ```csharp
 using System;
 using System.Collections.Generic;
 
-Queue<int> q = new Queue<int>(new [] { 11, 12, 13 });
-List<int> processed = new List<int>();
+LinkedList<string> nav = new LinkedList<string>();
+nav.AddLast("Home");
+nav.AddLast("Products");
+nav.AddFirst("Login");
 
-while (q.Count > 0)
+foreach (string page in nav)
 {
-    int next = q.Dequeue();
-    processed.Add(next);
-    Console.WriteLine("Processed: " + next);
+    Console.WriteLine(page);
 }
-
-Console.WriteLine("Log: " + string.Join(", ", processed));
 ```
+
+**Expected Output**
+
+```
+Login
+Home
+Products
+```
+
+---
+
+### 5) HashSet Basics — Unique Items
+
+Create a `HashSet<int>` with duplicates. Show that only unique values remain, and check membership.
+
+```csharp
+using System;
+using System.Collections.Generic;
+
+HashSet<int> set = new HashSet<int> { 1, 2, 2, 3 };
+Console.WriteLine("Count: " + set.Count);
+Console.WriteLine("Contains 2: " + set.Contains(2));
+foreach (int n in set)
+{
+    Console.WriteLine(n);
+}
+```
+
+**Expected Output** *(order may vary)*
+
+```
+Count: 3
+Contains 2: True
+1
+2
+3
+```
+
+---
+
+## Theme B (Q6–Q10): Independent Practice (Same Concepts — *No solution code here*)
+
+> Use only **List**, **Stack**, **Queue**, **LinkedList**, and **HashSet**. Include the exact inputs shown so your output matches. Write your own code to complete the tasks.
+
+### 6) List Practice — Find / Sort / Reverse
+
+**Inputs**
+`List<int> nums = new List<int> { 5, 2, 9, 1, 5, 6 };`
+
+**To‑Do**
+
+1. Print whether the list **contains** `5`.
+2. Print the index of the **first** `5`.
+3. Sort the list ascending and print it.
+4. Reverse the list and print it.
+
+**Expected Output**
+
+```
+Contains 5: True
+First index of 5: 0
+Sorted: 1, 2, 5, 5, 6, 9
+Reversed: 9, 6, 5, 5, 2, 1
+```
+
+---
+
+### 7) Queue Practice — Processing Log in List
+
+**Inputs**
+`Queue<int> q = new Queue<int>(new [] { 11, 12, 13 });`
+
+**To‑Do**
+
+1. While the queue is not empty, dequeue the next ID and print `Processed: <id>`.
+2. Add each processed ID to a `List<int> processed`.
+3. After the loop, print the log as `Log: 11, 12, 13`.
 
 **Expected Output**
 
@@ -188,62 +235,18 @@ Log: 11, 12, 13
 
 ---
 
-## Theme B (Q6–Q10): Independent Practice
-
-> Keep the inputs exactly as shown so your output matches.
-
-### 6) List Practice — Add/Remove/Print
-
-**Input**
-`List<string> fruits = new() { "Apple", "Banana" };`
-Tasks:
-
-1. Add `"Cherry"`.
-2. Insert `"Apricot"` at index `1`.
-3. Remove `"Banana"`.
-4. Print count and each item on its own line.
-   **Expected Output**
-
-```
-Count: 3
-Apple
-Apricot
-Cherry
-```
-
----
-
-### 7) List Practice — Find/Sort/Reverse
-
-**Input**
-`List<int> nums = new() { 5, 2, 9, 1, 5, 6 };`
-Tasks:
-
-1. Print whether the list **contains** `5`.
-2. Print the index of the **first** `5`.
-3. Sort the list and print it.
-4. Reverse the list and print it.
-   **Expected Output**
-
-```
-Contains 5: True
-First index of 5: 0
-Sorted: 1, 2, 5, 5, 6, 9
-Reversed: 9, 6, 5, 5, 2, 1
-```
-
----
-
 ### 8) Stack Practice — Reverse Words
 
-**Input**
+**Inputs**
 `string sentence = "stacks use last in first out";`
-Tasks:
 
-1. Split into words.
+**To‑Do**
+
+1. Split the sentence into words.
 2. Push each word onto a `Stack<string>`.
-3. Pop all words to build a reversed sentence and print it.
-   **Expected Output**
+3. Pop all words to build a reversed sentence and print it on one line.
+
+**Expected Output**
 
 ```
 out first in last use stacks
@@ -251,97 +254,97 @@ out first in last use stacks
 
 ---
 
-### 9) Queue Practice — Remaining Count
+### 9) LinkedList Practice — RemoveFirst/RemoveLast
 
-**Input**
-`Queue<int> q = new(new [] { 7, 8, 9 });`
-Tasks:
+**Inputs**
+`LinkedList<int> nums = new LinkedList<int>(new int[] { 10, 20, 30 });`
 
-1. Before each `Dequeue`, print `"Remaining: X"`.
-2. Dequeue and print `"Processing: <id>"`.
-3. After the loop, print `"Remaining: 0"`.
-   **Expected Output**
+**To‑Do**
+
+1. Remove the first node.
+2. Add `40` to the end.
+3. Remove the last node.
+4. Print all remaining values on one line separated by comma+space.
+
+**Expected Output**
 
 ```
-Remaining: 3
-Processing: 7
-Remaining: 2
-Processing: 8
-Remaining: 1
-Processing: 9
-Remaining: 0
+20, 30
 ```
 
 ---
 
-### 10) Priorities to Front 
+### 10) HashSet Practice — Add / Remove / Contains
 
-**Input**
+**Inputs**
+`HashSet<string> colors = new HashSet<string> { "red", "blue" };`
+
+**To‑Do**
+
+1. Try to add duplicate `"red"` and new value `"green"`.
+2. Remove `"blue"`.
+3. Print the **Count** and then print every item on its own line (order may vary).
+
+**Expected Output** *(example)*
+
+```
+Count: 2
+red
+green
+```
+
+---
+
+## Hints (Detailed)
+
+### General Patterns
+
+* **Check before removing**: use `Count > 0` before `Pop()`/`Dequeue()`.
+* **Printing**: for lists/linked lists, `string.Join(", ", collection)` is convenient; for sets, order is **not guaranteed**.
+* **Searching**: `Contains`, `IndexOf` (first match), `LastIndexOf` (last match) on `List<T>`.
+* **Order of structures**: Stack = **LIFO**; Queue = **FIFO**; LinkedList supports fast add/remove at ends; HashSet keeps **unique** items.
+
+### Q6 Hints — List
+
+* Use `nums.Contains(5)` and `nums.IndexOf(5)`.
+* `nums.Sort()` sorts ascending; `nums.Reverse()` flips current order.
+* Use `string.Join(", ", nums)` for printing sequences.
+
+### Q7 Hints — Queue + List
+
+* Initialize `processed` as an empty list.
+* Loop: `while (q.Count > 0)` → `Dequeue()` each item, then `Add` to `processed`.
+* After the loop, join with `string.Join(", ", processed)`.
+
+### Q8 Hints — Stack
+
+* `sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries)` gives `string[] words`.
+* Push each word with `st.Push(word)`; pop while `st.Count > 0` and add to a `List<string>`.
+* Finally join the reversed list with spaces.
+
+### Q9 Hints — LinkedList
+
+* `RemoveFirst()` and `RemoveLast()` work only if the list is non-empty.
+* `AddLast(value)` appends at the end.
+* `string.Join(", ", nums)` will iterate the linked list in order.
+
+### Q10 Hints — HashSet
+
+* Adding duplicates returns `false` and **does not** change `Count`.
+* Removing a value not present returns `false`.
+* Iterate with `foreach` and print items; don’t rely on order.
+
+### Starter Template (for your solutions)
 
 ```csharp
-var tasks = new List<(string Name, int Priority)>
+using System;
+using System.Collections.Generic;
+
+class Program
 {
-    ("T1", 1),
-    ("T2", 3),
-    ("T3", 2),
-    ("T4", 3)
-};
+    static void Main()
+    {
+        // Write your code for Q6–Q10 here.
+    }
+}
 ```
-
-Tasks:
-
-1. Create a **new** list where higher `Priority` comes first (3, then 2, then 1).
-2. Build a `Queue<(string,int)>` from that sorted list.
-3. Dequeue and print `"Serving: <Name> (<Priority>)"` for all.
-   **Expected Output**
-
-```
-Serving: T2 (3)
-Serving: T4 (3)
-Serving: T3 (2)
-Serving: T1 (1)
-```
-
----
-
-## Hints
-
-* **List<T>**
-
-  * Add/Insert: `Add(item)`, `Insert(index, item)`
-  * Remove: `Remove(value)`, `RemoveAt(index)`
-  * Search: `Contains`, `IndexOf`, `LastIndexOf`
-  * Output helpers: `string.Join(", ", list)`, `list.ToArray()`
-  * Sorting: `list.Sort()`, `list.Reverse()` (works on value types and reference types by comparer)
-* **Stack<T>** (LIFO)
-
-  * `Push(item)`, `Pop()`, `Peek()`, `Count`
-  * Typical pattern: **push while reading**, then **pop while writing** to reverse order.
-* **Queue<T>** (FIFO)
-
-  * `Enqueue(item)`, `Dequeue()`, `Peek()`, `Count`
-  * Typical pattern: **enqueue tasks**, then **process until Count == 0**.
-* **Common pitfalls**
-
-  * Don’t `Pop()`/`Dequeue()` on empty collections (check `Count > 0`).
-  * After `RemoveAt`, indices shift; iterate carefully.
-  * `ToList()` creates a **shallow** copy for reference types (inner objects are shared).
-* **Printing tips**
-
-  * For lists of primitives: `Console.WriteLine(string.Join(", ", list));`
-  * For custom types, override `ToString()` or project to strings before joining.
-* **Starter template**
-
-  ```csharp
-  using System;
-  using System.Collections.Generic;
-  using System.Linq;
-
-  class Program
-  {
-      static void Main()
-      {
-          // Paste one question's code here and run.
-      }
-  }
-  ```
