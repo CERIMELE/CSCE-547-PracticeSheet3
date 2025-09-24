@@ -244,15 +244,15 @@ Intersection: 3
 
 1. Add the pairs in the order above.
 2. Print **Keys** in order on one line.
-3. Print `Key→Value` pairs each on its own line.
+3. Print `Key: Value` pairs each on its own line.
 
 **Expected Output**
 
 ```
 Keys: Apple Banana Cherry
-Apple→12
-Banana→8
-Cherry→6
+Apple: 12
+Banana: 8
+Cherry: 6
 ```
 
 ---
