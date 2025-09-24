@@ -1,4 +1,4 @@
-# Lists, Stacks, & Queues — Practice Sheet (Beginner-Friendly)
+# Lists, Stacks, & Queues — Practice Sheet 
 
 We will do **Q1–Q5 in class** (guided), and **Q6–Q10** independently (practice on the same topics).
 Topics: **List<T>**, **Stack<T>** (LIFO), **Queue<T>** (FIFO).
