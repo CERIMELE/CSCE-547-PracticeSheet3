@@ -1,6 +1,6 @@
 # Practice Sets — Overview
 
-This repository contains **two parts** of beginner-friendly C# collection practice. Use them independently or in sequence.
+This repository contains **two parts** of beginner-friendly C# collection practice.
 
 ---
 
