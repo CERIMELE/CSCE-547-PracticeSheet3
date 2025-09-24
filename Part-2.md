@@ -59,7 +59,9 @@ if (mid != null)
 
 steps.Remove("Prep");               // Start, Middle, Post, End
 
-foreach (var s in steps) Console.WriteLine(s);
+foreach (var s in steps) {
+    Console.WriteLine(s);
+}
 ```
 
 **Expected Output**
@@ -84,7 +86,9 @@ using System.Collections.Generic;
 HashSet<int> set = new HashSet<int> { 1, 2, 2, 3 };
 Console.WriteLine("Count: " + set.Count);
 Console.WriteLine("Contains 2: " + set.Contains(2));
-foreach (int n in set) Console.WriteLine(n);
+foreach (int n in set) {
+    Console.WriteLine(n);
+}
 ```
 
 **Expected Output** *(order may vary)*
@@ -113,11 +117,14 @@ codes.Add(10, "Alpha");
 codes.Add(30, "Gamma");
 
 Console.WriteLine("By Keys:");
-foreach (var k in codes.Keys) Console.WriteLine(k);
+foreach (var k in codes.Keys) {
+    Console.WriteLine(k);
+}
 
 Console.WriteLine("Key: Value:");
-foreach (var kv in codes) Console.WriteLine(kv.Key + ": " + kv.Value);
-
+foreach (var kv in codes) {
+    Console.WriteLine(kv.Key + ": " + kv.Value);
+}
 Console.WriteLine("Lookup 20: " + codes[20]);
 ```
 
@@ -152,11 +159,15 @@ nums.Add(3);
 nums.Add(3); // duplicate ignored
 
 Console.WriteLine("Ascending:");
-foreach (int n in nums) Console.Write(n + " ");
+foreach (int n in nums) {
+    Console.Write(n + " ");
+}
 Console.WriteLine();
 
 Console.WriteLine("Descending:");
-foreach (int n in nums.Reverse()) Console.Write(n + " ");
+foreach (int n in nums.Reverse()) {
+    Console.Write(n + " ");
+}
 Console.WriteLine();
 
 Console.WriteLine("Min: " + nums.Min + ", Max: " + nums.Max);
