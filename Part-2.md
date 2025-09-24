@@ -1,4 +1,4 @@
-# LinkedList, HashSet, SortedList & SortedSet — Practice Sheet (Beginner-Friendly)
+# LinkedList, HashSet, SortedList & SortedSet — Practice Sheet
 
 We will do **Q1–Q5 in class** (guided), and **Q6–Q10** independently (practice on the same topics).
 **Concepts only in this sheet:** **LinkedList<T>**, **HashSet<T>**, **SortedList\<TKey,TValue>**, **SortedSet<T>**.
